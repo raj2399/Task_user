@@ -1,0 +1,114 @@
+<!-- <mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+
+    <ng-container matColumnDef="Email id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email id </th>
+      <td mat-cell *matCellDef="let row"> {{row.email_id}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="User name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> User name </th>
+      <td mat-cell *matCellDef="let row"> {{row.user_name}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Gender">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+      <td mat-cell *matCellDef="let row"> {{row.gender}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+      <td mat-cell *matCellDef="let row" > {{row.age}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Children Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Children Name </th>
+      <td mat-cell *matCellDef="let row" > {{row.children_name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div> -->
+
+<div class="card size">
+  <div class="card-header card-header-primary">
+      <h2 class="card-title ">User Details</h2>
+      <p class="card-category"> click on header to sort the data</p>
+  </div>
+  <div class="row">
+      <div class="col-md-8">
+          <mat-form-field class="example-form">
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search User Details"
+                  class="example-full-width">
+          </mat-form-field>
+      </div>
+  </div>
+
+  <div class="card-body" *ngIf="!flag">
+      <div class="table-responsive">
+          <h6>*No Record Found</h6>
+      </div>
+  </div>
+
+  <div class="card-body" *ngIf="flag">
+      <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+              <tbody>
+                <ng-container matColumnDef="Email id">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email id </th>
+                  <td mat-cell *matCellDef="let row"> {{row.email_id}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="User name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> User name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.user_name}} </td>
+                </ng-container>
+
+
+
+
+
+                <ng-container matColumnDef="Age">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+                  <td mat-cell *matCellDef="let row" > {{row.age}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Children Name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Children Name </th>
+                  <td mat-cell *matCellDef="let row" > {{row.children_name}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>                          </tbody>
+          </table>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4">
+
+      </div>
+
+      <div class="col-md-8">
+          <mat-paginator [pageSizeOptions]="[1,3,5]">
+          </mat-paginator>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<mat-card class="example-card">
+  <form class="example-form">
+
+    <div *ngIf="!flag" class="example-button-container" style="display: inline;">
+      <button mat-mini-fab color="primary" (click)="minus_one()">
+        --
+      </button>
+    </div>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>age</mat-label>
+      <input type="name" name="age" matInput [(ngModel)]="age" readonly>
+    </mat-form-field>
+
+    <div *ngIf="!flag" class="example-button-container" style="display: inline;">
+      <button mat-mini-fab color="primary" (click)="plus_one()">
+        ++
+      </button>
+    </div>
+
+
+    <mat-form-field appearance="fill"  style="width: 300px;display: block;">
+      <mat-label>Gender</mat-label>
+      <mat-select [disabled]="flag" [(value)]="gender">
+        <mat-option [value]="1">Male</mat-option>
+        <mat-option [value]="0">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Children's Name</mat-label>
+      <input [disabled]="flag" type="text" [(ngModel)]="c_name" matInput [formControl]="cnameFormControl" placeholder="Names">
+      <mat-error *ngIf="cnameFormControl.hasError('required')">
+        children's is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button *ngIf="!flag" style="display: block;" [disabled]="age==0 || c_name.length==0 " mat-raised-button color="primary" (click)="onClickAdd()">Add Details</button>
+
+
+  </form>
+  </mat-card>
